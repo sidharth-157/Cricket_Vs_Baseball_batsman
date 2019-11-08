@@ -1,0 +1,33 @@
+$.post(url_for('predict'),{
+                        img:"../static/"+path
+                      },
+                      function(responce){
+                        obj = response.responseText;
+                        alert(obj);
+                      });
+
+
+
+ data = request.get_json()
+    x = data['img']
+    img = open_image(x)
+    pred_class,pred_idx,outputs = learn.predict(img)
+    return pred_class
+
+
+
+<script>
+                  $(document).ready(function() {
+                    $("#file").change(function() {
+                      const data = this.files;
+                      const path = data[0].name;
+                      document
+                        .getElementById("bn")
+                        .addEventListener("click", function() {
+                          console.log(path);
+                          document.getElementById("img").src =
+                            "../static/" + path;
+                        });
+                    });
+                  });
+                </script>
